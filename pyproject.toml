@@ -1,6 +1,6 @@
 [project]
 name = "voice-transcriber-mcp"
-version = "2.0.0"
+version = "2.0.1"
 description = "MCP server for transcribing Google Chat voice messages using Groq Whisper API"
 requires-python = ">=3.10"
 license = "MIT"
