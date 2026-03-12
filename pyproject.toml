@@ -1,8 +1,18 @@
 [project]
 name = "voice-transcriber-mcp"
 version = "2.0.0"
-description = "MCP server for transcribing voice messages from Google Chat using Groq Whisper API"
+description = "MCP server for transcribing Google Chat voice messages using Groq Whisper API"
 requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Francesco Gasparetto", email = "fgasparetto@gmail.com" }]
+readme = "README.md"
+keywords = ["mcp", "model-context-protocol", "voice", "transcription", "whisper", "groq", "google-chat"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries",
+]
 dependencies = [
     "mcp>=1.0.0",
     "google-auth>=2.0.0",
@@ -11,5 +21,18 @@ dependencies = [
     "requests>=2.28.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/fgasparetto/voice-transcriber-mcp"
+Repository = "https://github.com/fgasparetto/voice-transcriber-mcp"
+Issues = "https://github.com/fgasparetto/voice-transcriber-mcp/issues"
+
 [project.scripts]
-voice-transcriber = "server:main"
+voice-transcriber-mcp = "server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+include = ["server.py"]
