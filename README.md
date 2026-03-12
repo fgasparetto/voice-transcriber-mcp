@@ -1,3 +1,5 @@
+<!-- mcp-name: io.github.fgasparetto/voice-transcriber-mcp -->
+
 # Voice Transcriber MCP Server
 
 MCP server that **automatically transcribes Google Chat voice messages** using [Groq Whisper API](https://console.groq.com/) (whisper-large-v3). No local GPU needed.

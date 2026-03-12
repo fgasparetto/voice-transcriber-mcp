@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/registry/refs/heads/main/schema/server.schema.json",
+  "name": "io.github.fgasparetto/voice-transcriber-mcp",
+  "title": "Voice Transcriber MCP Server",
+  "description": "MCP server for transcribing Google Chat voice messages using Groq Whisper API",
+  "version": "2.0.0",
+  "repository": {
+    "url": "https://github.com/fgasparetto/voice-transcriber-mcp",
+    "source": "github"
+  },
+  "packages": [{
+    "registryType": "pypi",
+    "identifier": "voice-transcriber-mcp",
+    "version": "2.0.0",
+    "transport": { "type": "stdio" },
+    "environmentVariables": [
+      {
+        "name": "GROQ_API_KEY",
+        "description": "Groq API key for Whisper transcription (free at console.groq.com)",
+        "isRequired": true,
+        "isSecret": true
+      },
+      {
+        "name": "GCHAT_TOKEN_PATH",
+        "description": "Path to Google Chat OAuth2 token.json",
+        "isRequired": false,
+        "isSecret": false,
+        "format": "filepath"
+      }
+    ]
+  }]
+}
