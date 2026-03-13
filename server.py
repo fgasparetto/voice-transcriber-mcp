@@ -112,7 +112,7 @@ def download_attachment(message: dict, output_dir: str) -> Optional[str]:
         resource_name = data_ref.get("resourceName")
 
         if not resource_name:
-            logger.warning(f"No attachmentDataRef.resourceName for: {content_name}")
+            logger.warning("No attachmentDataRef.resourceName for attachment")
             continue
 
         # Download via media API endpoint (the only method that works with Chat OAuth scopes)
@@ -122,14 +122,14 @@ def download_attachment(message: dict, output_dir: str) -> Optional[str]:
         response = requests.get(url, headers=headers, allow_redirects=True)
 
         if response.status_code != 200:
-            logger.error(f"Media download failed: HTTP {response.status_code} - {response.text[:200]}")
+            logger.error(f"Media download failed: HTTP {response.status_code}")
             continue
 
         output_path = os.path.join(output_dir, content_name)
         with open(output_path, "wb") as f:
             f.write(response.content)
 
-        logger.info(f"Downloaded {content_name} ({len(response.content)} bytes)")
+        logger.info(f"Downloaded audio ({len(response.content)} bytes)")
         return output_path
 
     return None
@@ -207,7 +207,7 @@ def transcribe_voice_message(
         return f"Error: Could not parse Google Chat URL: {message_url}"
 
     try:
-        logger.info(f"Fetching message: {message_name}")
+        logger.info("Fetching message...")
         message = fetch_message_with_attachments(message_name)
 
         attachments = message.get("attachment", [])
@@ -221,7 +221,7 @@ def transcribe_voice_message(
             if not audio_path:
                 return "Failed to download the audio attachment."
 
-            logger.info(f"Transcribing via Groq: {audio_path}")
+            logger.info("Transcribing via Groq...")
             text = transcribe_audio(audio_path, language=language)
 
             sender = message.get("sender", {}).get("name", "Unknown")

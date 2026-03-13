@@ -1,6 +1,6 @@
 [project]
 name = "voice-transcriber-mcp"
-version = "2.0.1"
+version = "2.1.0"
 description = "MCP server for transcribing Google Chat voice messages using Groq Whisper API"
 requires-python = ">=3.10"
 license = "MIT"
@@ -14,11 +14,11 @@ classifiers = [
     "Topic :: Software Development :: Libraries",
 ]
 dependencies = [
-    "mcp>=1.0.0",
-    "google-auth>=2.0.0",
-    "google-auth-oauthlib>=1.0.0",
-    "google-api-python-client>=2.0.0",
-    "requests>=2.28.0",
+    "mcp>=1.26.0",
+    "google-auth>=2.40.0",
+    "google-auth-oauthlib>=1.2.0",
+    "google-api-python-client>=2.160.0",
+    "requests>=2.32.5",
 ]
 
 [project.urls]
